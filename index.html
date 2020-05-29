@@ -204,43 +204,60 @@
   <script>
     const mapContainer = document.querySelector("#map");
     const backBtn = mapContainer.querySelector("#back_btn");
-    const texas = mapContainer.querySelector("#texas_link");
     const map = mapContainer.querySelector("#us_map");
-    const height = getComputedStyle(mapContainer, null).height;
-    console.log(height)
-    const originalViewBox = {
-      width: 650,
-      height: 400
-    };
+    const originalViewBox = [0, 0, 650, 400]; // viewBox of initial map SVG
+    map.setAttribute("height", getComputedStyle(mapContainer, null).height); // so zoom works properly
     const allPins = Array.from(mapContainer.querySelectorAll(".pin_link"));
+    let lastActiveElem; // save last active element for focus
 
-    // save last active element for focus
-    let lastActiveElem;
+    // vars for zoom in/out animation
+    const totalAmountOfFrames = 32;
+    let requestID = null;
+    let currentFrameIndex = 0;
+    let targetViewBox;
+
+
+    /**
+     * Animation function that gradually changes 4 nums of viewBox to get it closer to targetViewBox, creating nice zoom in/out animation
+     * uses recursion and requestAnimationFrame 
+     * idea is borrowed in part from here: https://codepen.io/thebabydino/pen/brywXv/?editors=1010
+     */
+    function updateViewBox() {
+      let progress = ++currentFrameIndex / totalAmountOfFrames;
+      let j = 1 - progress;
+      let currentViewBox = originalViewBox.slice(); // make a copy of current viewBox array
+
+      // this is where magic of animation happens: loop thru all 4 array items and gradually get them closer to targetViewBox numbers
+      for (let i = 0; i < 4; i++) {
+        currentViewBox[i] = j * originalViewBox[i] + progress * targetViewBox[i];
+      }
+
+      map.setAttribute('viewBox', currentViewBox.join(' ')); // update viewBox in DOM
+
+      // stops recursion
+      if (!(currentFrameIndex % totalAmountOfFrames)) {
+        currentFrameIndex = 0;
+        originalViewBox.splice(0, 4, ...currentViewBox);
+        stopAni();
+        return;
+      }
+
+      requestID = requestAnimationFrame(updateViewBox); // recursion 
+    };
+
+    function stopAni() {
+      cancelAnimationFrame(requestID);
+      requestID = null;
+    };
 
     mapContainer.addEventListener('click', function (e) {
 
       // when state is clicked
       if (e.target.parentNode.classList.contains('state_link')) {
-        // calc new small viewBox for elem hovered
-        const smViewBox = e.target.getBBox();
-        // we store the values from the object as our new viewBox string
-        var newViewBox = `${smViewBox.x} ${smViewBox.y} ${smViewBox.width} ${smViewBox.height}`;
 
-        // we then set the new viewBox stsring as the vewBox attribute on the SVG
-        // map.setAttribute("viewBox", newViewBox);
-        map.setAttribute("height", height);
-        // map.classList.add("sm_viewbox");
-
-        // animate new viewBox using SMIL (but beware of browser support)
-        var animate = document.createElementNS("http://www.w3.org/2000/svg", 'animate');
-        animate.setAttribute("id", "animate");
-        animate.setAttribute("attributeName", "viewBox");
-        animate.setAttribute("dur", "2s");
-        animate.setAttribute("to", `${smViewBox.x} ${smViewBox.y} ${smViewBox.width} ${smViewBox.height}`);
-        animate.setAttribute("fill", "freeze");
-        // animate.setAttribute("begin", "click");
-        animate.setAttribute("repleatCount", "5");
-        map.prepend(animate);
+        const smViewBox = e.target.getBBox(); // --> object of viewBox data for that state
+        targetViewBox = [smViewBox.x, smViewBox.y, smViewBox.width, smViewBox.height]; // our new viewBox target
+        updateViewBox();
 
         backBtn.classList.remove("d-none");
         backBtn.focus();
@@ -261,20 +278,8 @@
       // when Back btn is clicked
       if (e.target.id === "back_btn") {
         // we then set the new viewBox stsring as the vewBox attribute on the SVG
-        // map.setAttribute("viewBox", `0 0 ${originalViewBox.width} ${originalViewBox.height}`);
-        // map.classList.remove("sm_viewbox");
-
-        map.removeChild(map.querySelector("#animate"));
-        // elem.setAttribute("to", `0 0 ${originalViewBox.width} ${originalViewBox.height}`);
-
-
-        // try to modify <animate>'s viewBox'
-        // animate = document.createElementNS("http://www.w3.org/2000/svg", 'animate');
-        // animate.setAttribute("attributeName", "viewBox");
-        // animate.setAttribute("dur", "2s");
-        // animate.setAttribute("to", `0 0 ${originalViewBox.width} ${originalViewBox.height}`);
-        // animate.setAttribute("fill", "freeze");
-        // map.prepend(animate);
+        targetViewBox = [0, 0, 650, 400];
+        updateViewBox();
 
         e.target.classList.add("d-none");
         lastActiveElem.focus();
@@ -311,7 +316,8 @@
 
 <!-- 
 Problems: 
-1) position of zoomed-in states
+1) [DONE] position of zoomed-in states
+2) [DONE] transition b/w zoomed-in states
 2) pins cutoff
 3) states need to be clickable w/ keyboard
 4) what happens with small states? 
