@@ -267,7 +267,7 @@
         // to show related pins
         // see if elem has 'data-state' attr
         // if yes, get value
-        const state = e.target.getAttribute('data-state');
+        const state = e.target.querySelector(".active_state").getAttribute('data-state');
         console.log(state)
         // find all pins with data-state attribute matching value
         const pins = Array.from(document.querySelectorAll(`a[data-state="${state}"`));
