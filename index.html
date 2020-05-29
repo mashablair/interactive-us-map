@@ -253,9 +253,8 @@
 
     mapContainer.addEventListener('click', function (e) {
 
-      console.log(e.target)
       // when state is clicked
-      if (e.target.parentNode.classList.contains('state_link')) {
+      if (e.target.closest('.state_link')) {
 
         const smViewBox = e.target.getBBox(); // --> object of viewBox data for that state
         targetViewBox = [smViewBox.x, smViewBox.y, smViewBox.width, smViewBox.height]; // our new viewBox target
@@ -291,13 +290,6 @@
       }
     });
 
-    mapContainer.addEventListener('keyup', function (e) {
-      if (e.key === 'Enter' && e.target.classList.contains('active_state')) {
-        console.log(e.target.querySelector(".active_state"))
-        e.target.querySelector(".active_state").click();
-      }
-    });
-
 
 
 
@@ -328,7 +320,7 @@ Problems:
 1) [DONE] position of zoomed-in states
 2) [DONE] transition b/w zoomed-in states
 2) [DONE] pins cutoff
-3) states need to be clickable w/ keyboard
+3) [DONE] states need to be clickable w/ keyboard
 4) what happens with small states? when clicked, zoom in on text + state, display city
 5) when zoomed-in, keyboard tabbing still goes through all interactive elems. it should be limited to zoomed in pins only
 6) probably the hardest part: how to plot locations on map using lat/long coordinates
