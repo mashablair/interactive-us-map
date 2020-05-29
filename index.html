@@ -50,7 +50,7 @@
     .pin {
       fill: #ff46a2;
       stroke: #fff;
-      stroke-width: .98;
+      stroke-width: 1;
       opacity: .8;
     }
 
@@ -71,7 +71,6 @@
 
     /* remove later */
     #map {
-      height: 50vh;
       width: 70vw;
     }
 
@@ -179,21 +178,24 @@
       <text x="208" y="178.75" class="bg_label sm_label_CO">CO</text>
       <text x="51.35" y="185.25" class="bg_label sm_label_CA">CA</text>
 
-      <!-- Pins -->
+      <!-- Locations -->
+      <!-- circles -->
       <a href="#" data-state="IL" class="pin_link d-none" aria-label="location pin" data-toggle="tooltip" data-placement="top" data-delay="100" data-title="Chicago, IL">
-        <path d="M404.014 111.902c-1.742 0-3.38.858-4.68 1.976-1.586 1.404-2.574 3.536-2.392 5.694-.003 1.898.884 3.614 1.768 5.226 1.508 2.704 3.172 5.356 4.108 8.32.546 1.508 1.014 3.042 1.508 4.55.156.234.286-.104.286-.234.962-3.25 2.054-6.474 3.744-9.412 1.118-2.08 2.47-4.082 3.224-6.344.572-1.95.416-4.186-.676-5.954-1.248-2.08-3.484-3.536-5.902-3.796-.338-.002-.702-.002-1.04-.002l.052-.024z" class="pin" /></a>
+        <circle cx="404.40" cy="137.82" r="5" class="pin" /></a>
       <a href="#" data-state="CA" class="pin_link d-none" aria-label="location pin" data-toggle="tooltip" data-placement="top" data-delay="100" data-title="San Francisco, CA">
-        <path d="M25.07 130.954c-1.743 0-3.38.858-4.68 1.976-1.587 1.404-2.575 3.536-2.393 5.694-.002 1.898.884 3.614 1.768 5.226 1.508 2.704 3.172 5.356 4.108 8.32.546 1.508 1.014 3.042 1.508 4.55.156.234.286-.104.286-.234.962-3.25 2.054-6.474 3.744-9.412 1.118-2.08 2.47-4.082 3.224-6.344.572-1.95.416-4.186-.676-5.954-1.248-2.08-3.484-3.536-5.902-3.796-.338-.003-.702-.003-1.04-.003l.052-.023z" class="pin" /></a>
+        <circle cx="25.45" cy="156.87" r="5" class="pin" /></a>
       <a href="#" data-state="TX" class="pin_link d-none" aria-label="location pin" data-toggle="tooltip" data-placement="top" data-delay="100" data-title="Dallas, TX">
-        <path d="M305.58 244.903c-1.742 0-3.38.858-4.68 1.976-1.586 1.404-2.574 3.536-2.392 5.694-.003 1.898.884 3.614 1.768 5.226 1.508 2.704 3.172 5.356 4.108 8.32.546 1.508 1.014 3.042 1.508 4.55.156.234.286-.104.286-.234.962-3.25 2.054-6.474 3.744-9.412 1.118-2.08 2.47-4.082 3.224-6.344.572-1.95.416-4.186-.676-5.954-1.248-2.08-3.484-3.536-5.902-3.796-.338-.003-.702-.003-1.04-.003l.052-.023z" class="pin" /></a>
+        <circle cx="305.96" cy="270.82" r="5" class="pin" /></a>
       <a href="#" data-state="GA" class="pin_link d-none" aria-label="location pin" data-toggle="tooltip" data-placement="top" data-delay="100" data-title="Atlanta, GA">
-        <path d="M453.241 221.636c-1.742 0-3.38.858-4.68 1.976-1.586 1.404-2.574 3.536-2.392 5.694-.002 1.898.884 3.614 1.768 5.226 1.508 2.704 3.172 5.356 4.108 8.32.546 1.508 1.014 3.042 1.508 4.55.156.234.286-.104.286-.234.962-3.25 2.054-6.474 3.744-9.412 1.118-2.08 2.47-4.082 3.224-6.344.572-1.95.416-4.186-.676-5.954-1.248-2.08-3.484-3.536-5.902-3.796-.338-.002-.702-.002-1.04-.002l.052-.024z" class="pin" /></a>
+        <circle cx="453.63" cy="247.55" r="5" class="pin" /></a>
       <a href="#" data-state="CO" class="pin_link d-none" aria-label="location pin" data-toggle="tooltip" data-placement="top" data-delay="100" data-title="Denver, CO">
-        <path d="M218.252 140.997c-1.742 0-3.38.858-4.68 1.976-1.586 1.404-2.574 3.536-2.392 5.694-.002 1.898.884 3.614 1.768 5.226 1.508 2.704 3.172 5.356 4.108 8.32.546 1.508 1.014 3.042 1.508 4.55.156.234.286-.104.286-.234.962-3.25 2.054-6.474 3.744-9.412 1.118-2.08 2.47-4.082 3.224-6.344.572-1.95.416-4.186-.676-5.954-1.248-2.08-3.484-3.536-5.902-3.796-.338-.002-.702-.002-1.04-.002l.052-.024z" class="pin" /></a>
+        <circle cx="218.64" cy="166.91" r="5" class="pin" /></a>
+      <a href="#" data-state="AK" class="pin_link d-none" aria-label="location pin" data-toggle="tooltip" data-placement="top" data-delay="100" data-title="Anchorage, AK">
+        <circle cx="77.2" cy="344.50" r="5" class="pin" /></a>
+
+      <!-- Stars -->
       <a href="#" data-state="MN" class="pin_link d-none" aria-label="location pin" data-toggle="tooltip" data-placement="top" data-delay="100" data-title="Minneapolis, MN">
         <path fill="#ffe42f" stroke="#fff" d="M342.431 79.744c-1.43 4.095-2.73 8.19-4.062 12.318-4.388.003-8.808.003-13.163.065 3.51 2.535 7.02 5.037 10.498 7.572-.065.943-.52 1.853-.748 2.763-1.04 3.217-2.145 6.467-3.152 9.685 1.592-1.008 3.087-2.21 4.647-3.283 2.015-1.43 4.03-2.892 6.013-4.322 3.542 2.502 7.02 5.135 10.595 7.572-1.3-4.127-2.665-8.222-3.998-12.317 3.543-2.568 7.118-5.07 10.628-7.67-4.388-.004-8.775-.065-13.163-.098-1.365-4.095-2.632-8.19-4.062-12.252z" class="pin" /></a>
-      <a href="#" data-state="AK" class="pin_link d-none" aria-label="location pin" data-toggle="tooltip" data-placement="top" data-delay="100" data-title="Anchorage, AK">
-        <path d="M76.81 318.582c-1.742 0-3.38.858-4.68 1.976-1.586 1.404-2.574 3.536-2.392 5.694-.002 1.898.884 3.614 1.768 5.226 1.508 2.704 3.172 5.356 4.108 8.32.546 1.508 1.014 3.042 1.508 4.55.156.234.286-.104.286-.234.962-3.25 2.054-6.474 3.744-9.412 1.118-2.08 2.47-4.082 3.224-6.344.572-1.95.416-4.186-.676-5.954-1.248-2.08-3.484-3.536-5.902-3.796-.338-.003-.702-.003-1.04-.003l.052-.023z" class="pin" /></a>
       <a href="#" data-state="CA" class="pin_link d-none" aria-label="location pin" data-toggle="tooltip" data-placement="top" data-delay="100" data-title="<h6>Santa Barbara, CA</h6><div>Some other content here</div>">
         <path d="M41.986 196.144c-1.144 3.276-2.184 6.552-3.25 9.854-3.51.003-7.046.003-10.53.052 2.808 2.028 5.616 4.03 8.398 6.058-.052.754-.416 1.482-.598 2.21-.832 2.574-1.716 5.174-2.522 7.748 1.274-.806 2.47-1.768 3.718-2.626 1.612-1.144 3.224-2.314 4.81-3.458 2.834 2.002 5.616 4.108 8.476 6.058-1.04-3.302-2.132-6.578-3.198-9.854 2.834-2.054 5.694-4.056 8.502-6.136-3.51-.002-7.02-.052-10.53-.078-1.092-3.276-2.106-6.552-3.25-9.802z" class="pin" /></a>
     </svg>
@@ -211,7 +213,7 @@
     let lastActiveElem; // save last active element for focus
 
     // vars for zoom in/out animation
-    const totalAmountOfFrames = 32;
+    const totalAmountOfFrames = 16;
     let requestID = null;
     let currentFrameIndex = 0;
     let targetViewBox;
@@ -318,8 +320,9 @@
 Problems: 
 1) [DONE] position of zoomed-in states
 2) [DONE] transition b/w zoomed-in states
-2) pins cutoff
+2) [DONE] pins cutoff
 3) states need to be clickable w/ keyboard
 4) what happens with small states? 
 5) when zoomed-in, keyboard tabbing still goes through all interactive elems. it should be limited to zoomed in pins only
+6) probably the hardest part: how to plot locations on map using lat/long coordinates
  -->
