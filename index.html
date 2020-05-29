@@ -170,7 +170,6 @@
 
       <!-- Labels for Big States -->
       <text x="73.45" y="321.75" class="bg_label sm_label_AK">AK</text>
-      <text x="529.75" y="102.7" class="bg_label sm_label_NY">NY</text>
       <text x="390" y="162.5" class="bg_label sm_label_IL">IL</text>
       <text x="466.7" y="263.25" class="bg_label sm_label_GA">GA</text>
       <text x="328.9" y="80.6" class="bg_label sm_label_MN">MN</text>
@@ -254,6 +253,7 @@
 
     mapContainer.addEventListener('click', function (e) {
 
+      console.log(e.target)
       // when state is clicked
       if (e.target.parentNode.classList.contains('state_link')) {
 
@@ -289,8 +289,15 @@
           item.classList.add('d-none');
         });
       }
-
     });
+
+    mapContainer.addEventListener('keyup', function (e) {
+      if (e.key === 'Enter' && e.target.classList.contains('active_state')) {
+        console.log(e.target.querySelector(".active_state"))
+        e.target.querySelector(".active_state").click();
+      }
+    });
+
 
 
 
@@ -322,7 +329,7 @@ Problems:
 2) [DONE] transition b/w zoomed-in states
 2) [DONE] pins cutoff
 3) states need to be clickable w/ keyboard
-4) what happens with small states? 
+4) what happens with small states? when clicked, zoom in on text + state, display city
 5) when zoomed-in, keyboard tabbing still goes through all interactive elems. it should be limited to zoomed in pins only
 6) probably the hardest part: how to plot locations on map using lat/long coordinates
  -->
