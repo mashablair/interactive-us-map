@@ -294,6 +294,8 @@
 
       // when state is clicked
       if (e.target.closest('.state_link')) {
+        console.warn(e.target)
+        console.warn(e.target.closest('.state_link'))
 
         const smViewBox = e.target.getBBox(); // --> object of viewBox data for that state
         targetViewBox = [smViewBox.x, smViewBox.y, smViewBox.width, smViewBox.height]; // our new viewBox target
@@ -302,7 +304,13 @@
         backBtn.classList.remove("d-none");
 
         // to show related pins
-        const state = e.target.querySelector(".active_state").getAttribute('data-state'); // e.g. "CA"
+        let state;
+        // we need this b/c e.target is different if you click or use Enter key
+        if (e.target.matches('.state_link')) {
+          state = e.target.querySelector(".active_state").getAttribute('data-state'); // e.g. "CA"
+        } else {
+          state = e.target.getAttribute('data-state'); // e.g. "CA"
+        }
         // find all pins with data-state attribute matching value
         const pins = Array.from(document.querySelectorAll(`a[data-state="${state}"`));
         pins.forEach(function (item, i) {
@@ -341,8 +349,6 @@
 
     // All keyboard listeners
     document.addEventListener('keyup', function (e) {
-      document.activeElement;
-      e.preventDefault();
 
       // when zoomed-in, Esc key will zoom out
       if (zoomedIn && e.key === "Escape") {
@@ -411,4 +417,6 @@ Problems:
 4) what happens with small states? when clicked, zoom in on text + state, display city
 5) [DONE] when zoomed-in, keyboard tabbing still goes through all interactive elems. it should be limited to zoomed in pins only
 6) probably the hardest part: how to plot locations on map using lat/long coordinates
+7) tooltips on pins when zoomed-in
+8) accessibility markup add
  -->
