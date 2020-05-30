@@ -69,6 +69,10 @@
       margin: .5em;
     }
 
+    a.pin_link:focus {
+      outline: -webkit-focus-ring-color auto 2px;
+    }
+
     /* remove later */
     #map {
       width: 70vw;
@@ -386,22 +390,22 @@
 
 
 
-    // // Creates event listeners for every tooltip trigger so that tooltips show/hide on tabbing through the map
-    // var pins = Array.from(document.querySelectorAll("[data-toggle]"));
-    // var tooltips = [];
-    // pins.forEach(function (item) {
-    //   tooltips.push(new Tooltip(item, {}));
-    // });
+    // Creates event listeners for every tooltip trigger so that tooltips show/hide on tabbing through the map
+    var pins = Array.from(document.querySelectorAll("[data-toggle]"));
+    var tooltips = [];
+    pins.forEach(function (item) {
+      tooltips.push(new Tooltip(item, {}));
+    });
 
-    // for (let i = 0; i < pins.length; i++) {
-    //   pins[i].addEventListener('focus', function () {
-    //     tooltips[i].show()
-    //   });
+    for (let i = 0; i < pins.length; i++) {
+      pins[i].addEventListener('focus', function () {
+        tooltips[i].show()
+      });
 
-    //   pins[i].addEventListener('blur', function () {
-    //     tooltips[i].hide()
-    //   });
-    // }
+      pins[i].addEventListener('blur', function () {
+        tooltips[i].hide()
+      });
+    }
   </script>
 </body>
 
