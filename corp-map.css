@@ -1,0 +1,90 @@
+<style>
+svg>* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.states {
+  fill: #77bcff;
+  stroke: #fff;
+  stroke-width: 1.21875;
+  stroke-linejoin: round;
+}
+
+.active_state {
+  fill: pink !important;
+  cursor: pointer;
+}
+
+.pin:hover {
+  opacity: 1;
+}
+
+text {
+  fill: #002767;
+  text-anchor: middle;
+  stroke-width: 0;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: arial, sans-serif;
+}
+
+.sm_states {
+  fill: #77bcff;
+  stroke: #fff;
+  stroke-width: 1.875;
+  stroke-linejoin: round;
+
+  width: 30px;
+  height: 20px;
+}
+
+.pin {
+  fill: #ff46a2;
+  stroke: #fff;
+  stroke-width: 1;
+  opacity: .8;
+}
+
+text {
+  pointer-events: none;
+}
+
+.us_map {
+  transition: .5s all;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+
+#back_btn {
+  position: absolute;
+  margin: .5em;
+}
+
+a.pin_link:focus {
+  outline: -webkit-focus-ring-color auto 2px;
+}
+
+/* remove later */
+#map {
+  width: 70vw;
+}
+
+button:focus {
+  outline: 2px dotted;
+}
+
+.logo>img {
+  width: 20vw;
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menuitemcontainer {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+}
+</style>
