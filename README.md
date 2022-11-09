@@ -4,7 +4,7 @@ Playing with SVG animations to make interactive, accessible map of the US to dis
 
 ## Demo
 
-https://romantic-bardeen-97d05a.netlify.app/
+https://corporate-locations.netlify.app/#
 
 ## Problems:
 
